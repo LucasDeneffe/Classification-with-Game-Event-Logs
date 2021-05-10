@@ -1,8 +1,4 @@
 #Install libraries and import dependencies
-pip install git+https://github.com/ck37/coral-ordinal/
-pip install pickle
-pip install alibi
-
 import pandas as pd
 import pickle 
 import numpy as np
@@ -30,7 +26,7 @@ def import_data():
 def split_log():
     #sequence of player 1
     global Xp1_train, Xp1_val, Xp1_test, Xp1
-    Xp1_train, Xp1_val = train_test_split(Xp1 test_size = 0.3 , random_state = 15)
+    Xp1_train, Xp1_val = train_test_split(Xp1, test_size = 0.3 , random_state = 15)
     Xp1_val, Xp1_test = train_test_split(Xp1_val, test_size = 1/3 , random_state = 15)
     gc.collect()
     del Xp1
@@ -47,7 +43,7 @@ def get_model_summary():
     model.summary()
 
 def save_model(model):
-    model.save(Input("Give filepath to store model: ")
+    model.save(Input("Give filepath to store model: "))
 
 def train_model(label):
   from keras.layers import Input, Dropout, Embedding, Flatten, Dense, Concatenate, LSTM, Bidirectional, Masking
