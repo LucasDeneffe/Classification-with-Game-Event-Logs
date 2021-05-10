@@ -17,3 +17,4 @@ The three folders in these directory contain the logs of the HParams plugin used
 ```
 
 Select the HPARAMS tab on top in the Tensorboard window to view the results.
+![HPARAMS](https://github.com/LucasDeneffe/Classification-with-Game-Event-Logs/blob/main/Experiment%201/Hyperparameter%20Tuning/TuningImg.jpg)
