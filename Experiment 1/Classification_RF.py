@@ -8,17 +8,16 @@ import pickle
 from sklearn.model_selection import train_test_split
 
 # Import data
-PF1 = np.load(f"C:/Users/Lucas/Documents/Arrays/PF1.npy")
-PF2 = np.load(f"C:/Users/Lucas/Documents/Arrays/PF2.npy")
-X = np.load(f"C:/Users/Lucas/Documents/Arrays/X.npy")
-yrank = np.load(f"C:/Users/Lucas/Documents/Arrays/yrank.npy")
-ywin = np.load(f"C:/Users/Lucas/Documents/Arrays/ywin.npy")
-with open(f"C:/Users/Lucas/Documents/Arrays/RFlog.pkl", "rb") as handle:
+PF1 = np.load(f"Data collection/Arrays/PF1.npy")
+PF2 = np.load(f"Data collection/Arrays/PF2.npy")
+X = np.load(f"Data collection/Arrays/X.npy")
+yrank = np.load(f"Data collection/Arrays/yrank.npy")
+ywin = np.load(f"Data collection/Arrays/ywin.npy")
+with open(f"Data collection/Arrays/RFlog.pkl", "rb") as handle:
     RFlog = pickle.load(handle)
 
 PF1_swap = np.swapaxes(PF1, 1, 2)
-PF2_swap = np.swapaxes(PF1, 1, 2)
-
+PF2_swap = np.swapaxes(PF2, 1, 2)
 
 def return_mean(a):
     trimmed_array = np.trim_zeros(a, trim="b")
@@ -35,6 +34,7 @@ RFlog_array = np.asarray(RFlog)
 print(RFlog_array.shape)
 print(PF1_avg.shape)
 
+# Combine all inputs
 Dataset = np.hstack((RFlog_array, PF1_avg, PF2_avg))
 
 ywin_array = np.asarray(ywin)
@@ -60,7 +60,7 @@ from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV
 
-#%%
+# Tune the Random Forest model
 # Number of trees in random forest
 n_estimators = [500, 1000, 2000]
 # Number of features to consider at every split
@@ -85,7 +85,6 @@ random_grid = {
     "random_state": [16],
 }
 
-#%%
 # Use the random grid to search for best hyperparameters
 # First create the base model to tune
 rf = RandomForestClassifier()
@@ -103,24 +102,25 @@ rf_random = GridSearchCV(
 )
 # Fit the random search model
 rf_random.fit(X_train, y_array_train.T[0])
-# %%
-
 
 def evaluate(random, model, test_features, test_labels):
     pred = model.predict(test_features)
     score = model.score(test_features, test_labels)
     confusion = classification_report(test_labels, pred)
     confusions_matrix = confusion_matrix(model.predict(test_features), test_labels)
+    #Save parameters from best model
     best_model_parameters = random.best_params_
 
-    file = open("Arrays/model_acc_RF_unscaled_win.txt", "w")
+    #Text file which saves scoer, confusion matrix and parameters
+    file = open("Experiment1/RF_models/model_acc_RF_win.txt", "w")
     file.write(str(score))
     file.write(str(confusion))
     file.write(str(best_model_parameters))
     file.write(np.array2string(confusions_matrix, separator=", "))
     file.close()
     data = pd.DataFrame(random.cv_results_)
-    data.to_csv("Arrays/random_rf_unscaled_win_results.csv")
+    #All results of the tuning
+    data.to_csv("Experiment1/RF_models/rf_win_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 
@@ -132,7 +132,7 @@ import pickle
 
 # Save the trained model as a pickle string.
 with open(
-    r"C:\Users\lucas\OneDrive\Thesis\Datasets\Starcraft data\StarcraftParserData\Arrays\RF_unscaled_win.pkl",
+    r"Models/RF_win.pkl",
     "wb",
 ) as handle:
     pickle.dump(best_random_win, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -163,19 +163,21 @@ def evaluate2(random, model, test_features, test_labels):
     confusions_matrix = confusion_matrix(model.predict(test_features), test_labels)
     best_random_params = random.best_params_
 
-    a = open("Arrays/model_acc_RF_unscaled_rank.txt", "w")
+    #Text file which saves scoer, confusion matrix and parameters
+    a = open("Experiment1/RF_models/model_acc_RF_rank.txt", "w")
     a.write(str(score))
     a.write(str(confusion))
     a.write(str(best_random_params))
     a.write(np.array2string(confusions_matrix, separator=", "))
     a.close()
     data = pd.DataFrame(random.cv_results_)
-    data.to_csv("Arrays/random_rf_unscaled_rank_results.csv")
+    #All results of the tuning
+    data.to_csv("Experiment1/RF_models/rf_rank_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 
 with open(
-    r"C:\Users\lucas\OneDrive\Thesis\Datasets\Starcraft data\StarcraftParserData\Arrays\RF_unscaled_rank.pkl",
+    r"Models/RF_rank.pkl",
     "wb",
 ) as handle:
     pickle.dump(best_random_win, handle, protocol=pickle.HIGHEST_PROTOCOL)
