@@ -68,7 +68,7 @@ METRIC_MAEL = "[coral.MeanAbsoluteErrorLabels()]"
 
 with tf.summary.create_file_writer(filepath + "/hparam_tuning1/").as_default():
   hp.hparams_config(
-    hparams=[HP_NUM_UNITS, HP_DROPOUT, HP_OPTIMIZER],
+    hparams=[HP_NUM_EMBEDDING, HP_DROPOUT, HP_OPTIMIZER],
     metrics=[hp.Metric(METRIC_ACCURACY, display_name='Accuracy'), hp.Metric(METRIC_MAEL, display_name = "MAEL")]
   )
 
