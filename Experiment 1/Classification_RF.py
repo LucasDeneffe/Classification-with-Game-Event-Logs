@@ -112,7 +112,7 @@ def evaluate(random, model, test_features, test_labels):
     best_model_parameters = random.best_params_
 
     #Text file which saves scoer, confusion matrix and parameters
-    file = open("Experiment1/RF_models/model_acc_RF_win.txt", "w")
+    file = open("Experiment 1/Hyperparameter Tuning/RF_models/model_acc_RF_win.txt", "w")
     file.write(str(score))
     file.write(str(confusion))
     file.write(str(best_model_parameters))
@@ -120,7 +120,7 @@ def evaluate(random, model, test_features, test_labels):
     file.close()
     data = pd.DataFrame(random.cv_results_)
     #All results of the tuning
-    data.to_csv("Experiment1/RF_models/rf_win_results.csv")
+    data.to_csv("Experiment 1/Hyperparameter Tuning/RF_models/rf_win_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 
@@ -164,7 +164,7 @@ def evaluate2(random, model, test_features, test_labels):
     best_random_params = random.best_params_
 
     #Text file which saves scoer, confusion matrix and parameters
-    a = open("Experiment1/RF_models/model_acc_RF_rank.txt", "w")
+    a = open("Experiment 1/Hyperparameter Tuning/model_acc_RF_rank.txt", "w")
     a.write(str(score))
     a.write(str(confusion))
     a.write(str(best_random_params))
@@ -172,7 +172,7 @@ def evaluate2(random, model, test_features, test_labels):
     a.close()
     data = pd.DataFrame(random.cv_results_)
     #All results of the tuning
-    data.to_csv("Experiment1/RF_models/rf_rank_results.csv")
+    data.to_csv("Experiment 1/Hyperparameter Tuning/RF_models/rf_rank_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 

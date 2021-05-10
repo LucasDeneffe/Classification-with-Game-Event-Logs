@@ -13,7 +13,7 @@ for i in range(1, 265):
     )
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_ZvZ_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_ZvZ_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")
@@ -25,7 +25,7 @@ for i in range(1, 191):
     )
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_PvP_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_PvP_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")
@@ -37,20 +37,20 @@ for i in range(1, 438):
     )
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_PvT_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_PvT_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")
 
 # PvZ
-for i in range(65, 493):
+for i in range(1, 493):
     url = r"https://lotv.spawningtool.com/zip/?tag=11&patch=&query=&after_time=&before_time=&coop=&order_by=&after_played_on=&before_played_on=&p={}".format(
         i
     )
 
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_PvZ_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_PvZ_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")
@@ -65,20 +65,20 @@ for i in range(1, 66):
 
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_TvZ_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_TvZ_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")
 
 # TvT
-for i in range(106, 203):
+for i in range(1, 203):
     url = r"https://lotv.spawningtool.com/zip/?tag=12&after_time=&after_played_on=&query=&patch=&before_time=&coop=&before_played_on=&order_by=&p={}".format(
         i
     )
 
     r = requests.get(url, allow_redirects=True)
 
-    with open(f"replays_zip_format/zip_replays_TvT_{i}.zip", "wb") as f:
+    with open(f"Data collection/Replays/zip_replays_TvT_{i}.zip", "wb") as f:
         f.write(r.content)
     if i % 20 == 0:
         print(f"page {i} is done")

@@ -100,14 +100,14 @@ def evaluate(random, model, test_features, test_labels):
     confusions_matrix = confusion_matrix(model.predict(test_features), test_labels)
     best_random_params = random.best_params_
 
-    a = open("Experiment1/XGB_models/model_acc_XG_win.txt", "w")
+    a = open("Experiment 1/Hyperparameter Tuning/XGB_models/model_acc_XG_win.txt", "w")
     a.write(str(score))
     a.write(str(confusion))
     a.write(str(best_random_params))
     a.write(np.array2string(confusions_matrix, separator=", "))
     a.close()
     data = pd.DataFrame(random.cv_results_)
-    data.to_csv("Experiment1/XGB_models/xg_win_results.csv")
+    data.to_csv("Experiment 1/Hyperparameter Tuning/XGB_models/xg_win_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 
@@ -141,14 +141,14 @@ def evaluate2(random, model, test_features, test_labels):
     confusions_matrix = confusion_matrix(model.predict(test_features), test_labels)
     best_random_params = random.best_params_
 
-    a = open("Experiment1/XGB_models/model_acc_XG_rank.txt", "w")
+    a = open("Experiment 1/Hyperparameter Tuning/XGB_models/model_acc_XG_rank.txt", "w")
     a.write(str(score))
     a.write(str(confusion))
     a.write(str(best_random_params))
     a.write(np.array2string(confusions_matrix, separator=", "))
     a.close()
     data = pd.DataFrame(random.cv_results_)
-    data.to_csv("Experiment1/XGB_models/xg_rank_results.csv")
+    data.to_csv("Experiment 1/Hyperparameter Tuning/XGB_models/xg_rank_results.csv")
     print(f"RFC score = {score} \n \n {confusion} \n\n {confusions_matrix}")
 
 

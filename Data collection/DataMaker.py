@@ -79,7 +79,7 @@ def create_log(until):
     dicnumber = 1
     ## Change with scraped replays here
     replays = sc2reader.load_replays(
-        r"C:\Users\morti\Desktop\data\Cleaned data\Replays", load_level=4)
+        r"Data\Replays", load_level=4)
     print("Woop woop, replays read")
     global winnerlog
     winnerlog = []
