@@ -135,14 +135,13 @@ filepath = input("Give the filepath where the arrays are stored: ")
 filepath2 = input("Give the filepath where the hypertuning logs should be stored: ")
 session_num = 0
 import_data()
-combine_PF()
 split_log()
 print("finished split_log")
-for units in HP_NUM_UNITS.domain.values:
+for embed in HP_NUM_EMBEDDING.domain.values:
   for dropout_rate in HP_DROPOUT.domain.values:
     for optimizer in HP_OPTIMIZER.domain.values:
         hparams = {
-          HP_NUM_UNITS: units,
+          HP_NUM_EMBEDDING: embed,
           HP_DROPOUT: dropout_rate,
           HP_OPTIMIZER: optimizer,
         }
