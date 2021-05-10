@@ -1,5 +1,3 @@
-# %%
-
 import sc2reader
 import pandas as pd
 import numpy as np
@@ -10,9 +8,6 @@ from sc2reader.engine.plugins import APMTracker
 import gc
 
 sc2reader.engine.register_plugin(APMTracker())
-
-# %%
-
 
 def commandString(self):
     string = str()
@@ -82,6 +77,7 @@ def create_log(until):
     unique = {}
     global dicnumber
     dicnumber = 1
+    ## Change with scraped replays here
     replays = sc2reader.load_replays(
         r"C:\Users\morti\Desktop\data\Cleaned data\Replays", load_level=4)
     print("Woop woop, replays read")
