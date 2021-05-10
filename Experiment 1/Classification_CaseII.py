@@ -162,6 +162,7 @@ def get_one_off_accuracy(matrix = ordinal_confusion_matrix()):
     return {"accuracyperleague" : accuracy, "total accuracy": totalaccuracy}
 
 #Main
+filepath = input("Give the filepath where the arrays are stored: ")
 import_data()
 combine_PF()
 split_log()
