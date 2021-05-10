@@ -16,11 +16,13 @@ import coral_ordinal as coral #Allows to use ordinal variables in Tensorflow
 
 
 def import_data():    
-    global yrankcorrect, ywin, X, PF1, PF2, unique
+    global yrankcorrect, ywin, Xp1, Xp2, X, PF1, PF2, unique
     yrank = np.load(filepath + "/yrank.npy")
     yrankcorrect = np.asarray([x - 2 for x in yrank])
     ywin = np.load(filepath + "/ywin.npy")
     ywin = np.asarray(ywin)
+    Xp1 =  np.load(filepath + "/Xp1.npy")
+    Xp2 =  np.load(filepath + "/Xp2.npy")
     X = np.load(filepath + "/X.npy")
     PF1 = np.load(filepath + "/PF1.npy")
     PF2 = np.load(filepath + "/PF1.npy")
