@@ -1,5 +1,3 @@
-# %%
-
 import sc2reader
 import pandas as pd
 import numpy as np
@@ -10,9 +8,6 @@ from sc2reader.engine.plugins import APMTracker
 import gc
 
 sc2reader.engine.register_plugin(APMTracker())
-
-# %%
-
 
 def commandString(self):
     string = str()
