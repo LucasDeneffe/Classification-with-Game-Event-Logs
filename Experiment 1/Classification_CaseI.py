@@ -111,7 +111,7 @@ def save_model():
 
 def load_model():
     import keras
-    model = keras.models.load_model(input("Location to load model: ") + "/CASE1MODEL", custom_objects = {"MeanAbsoluteErrorLabels()" : coral.MeanAbsoluteErrorLabels()})
+    model = keras.models.load_model(input("Filepath to model: ") , custom_objects = {"MeanAbsoluteErrorLabels()" : coral.MeanAbsoluteErrorLabels()})
 
 def ordinal_labels():
     from scipy import special
