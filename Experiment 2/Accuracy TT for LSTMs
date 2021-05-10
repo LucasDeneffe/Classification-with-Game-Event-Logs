@@ -31,6 +31,12 @@ def import_data():
     
     with open(filepath + "/unique.pkl", 'rb') as handle:
         unique = pickle.load(handle)
+        
+    with open(r"C:/Users/Lucas/Documents/Arrays//time1.pkl", 'rb') as handle:
+        time1 = pickle.load(handle)
+    
+    with open(r"C:/Users/Lucas/Documents/Arrays//time2.pkl", 'rb') as handle:
+        time2 = pickle.load(handle)
     
 def combine_PF():
     global PF
