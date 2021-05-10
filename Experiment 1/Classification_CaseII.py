@@ -1,6 +1,3 @@
-pip install git+https://github.com/ck37/coral-ordinal/
-pip install pickle
-
 #Install libraries and import dependencies
 pip install git+https://github.com/ck37/coral-ordinal/
 pip install pickle
