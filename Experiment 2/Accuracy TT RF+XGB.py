@@ -153,7 +153,6 @@ import_data()
 combine_PF()
 split_log()
 
-from scipy import special
 import gc
 accuracylstm = []
 oneoffaccuracy = []
@@ -170,9 +169,7 @@ for i in range(0,101, 1):
     rank_predictions = rank_model.predict(data)
     win_predictions = win_model.predict(data)
     print("Ended Predictions")
-    #predictions = model.predict([X_testshorter, PF_testshorter])
     accuracywin.append(SVM_win.score(data, ywin_test))
-    #accuracywin.append(model.evaluate([X_testshorter, PF1_testshorter], [yrank_test, ywin_test])[4])
     labels = rank_predictions
     labelsplus = labels + 1
     labelsmin = labels - 1
@@ -183,8 +180,7 @@ for i in range(0,101, 1):
     if i%5 == 0: 
         print(f"{i}% completed. Accuracy: {accuracylstm[-1]} -- {oneoffaccuracy[-1]} -- {accuracywin[-1]}")
         gc.collect()
-    #accuracyclf.append(scoresclf)
-    #accuracylr.append(scoreslr)
+
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
@@ -193,11 +189,7 @@ fig, (ax1, ax2,ax3) = plt.subplots(1,3, figsize=(30,10))
 ax1.plot(accuracy)
 ax2.plot(oneoffaccuracy)
 ax3.plot(accuracywin[:101])
-#ax.plot(accuracyclf, label = 'adaboost')
-#ax.plot(accuracylr, label = 'log reg')
-#a=ax.get_xticks()
-#b = ax.get_yticks()
-#plot_labels = np.around(a*/100)
+
 ax1.xaxis.set_major_formatter(mtick.PercentFormatter())
 ax1.set_xlabel("Percentage of game completed")
 ax1.set_ylabel("Accuracy in %")
@@ -211,22 +203,9 @@ ax3.set_xlabel("Percentage of game completed")
 ax3.set_ylabel("Accuracy in %")
 ax3.title.set_text('Win Accuracy')
 
-#ax.set_xticklabels(plot_labels.astype(int))
-#ax.set_yticklabels(np.around(b*100).astype(int))
 ax1.legend()
 ax2.legend()
 ax3.legend()
-
-#SLA DE VOLGENDE WAARDEN ERGENS OP VOOR IN LATEX ALS COORDINATEN TE GEBRUIKEN. BETER OM LATEX GRAPH TE GEBRUIKEN IPV AAFBEELDING VOOR SCHERPTE?
-for i, value in enumerate(oneoffaccuracy):
-    print(f"({i},{value})")
-
-for i, value in enumerate(accuracywin):
-    print(f"({i},{value})")
-
-for i, value in enumerate(accuracylstm):
-    print(f"({i},{value})")
-
 
 
 
