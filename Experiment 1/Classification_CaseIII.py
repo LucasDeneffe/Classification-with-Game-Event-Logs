@@ -191,6 +191,7 @@ def get_one_off_accuracy(matrix = ordinal_confusion_matrix()):
 
 #Main
 import_data()
+combine_PF()
 split_log()
 create_model()
 get_model_summary()
