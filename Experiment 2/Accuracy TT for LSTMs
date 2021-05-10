@@ -203,6 +203,7 @@ def create_graph(accuracyrank, oneoffaccuracy, accuracywin, modelname):
     plt.show()
     
 #Main
+filepath = input("Give the filepath where the arrays are stored: ")
 import_data()
 combine_pf()
 split_log()
