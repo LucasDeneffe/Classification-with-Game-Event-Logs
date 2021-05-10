@@ -66,7 +66,7 @@ HP_OPTIMIZER = hp.HParam('optimizer_lr', hp.Discrete([0.01, 0.001]))
 METRIC_ACCURACY = 'accuracy'
 METRIC_MAEL = "[coral.MeanAbsoluteErrorLabels()]"
 
-with tf.summary.create_file_writer(filepath + "/hparam_tuning1/").as_default():
+with tf.summary.create_file_writer(filepath2 + "/hparam_tuning1/").as_default():
   hp.hparams_config(
     hparams=[HP_NUM_EMBEDDING, HP_DROPOUT, HP_OPTIMIZER],
     metrics=[hp.Metric(METRIC_ACCURACY, display_name='Accuracy'), hp.Metric(METRIC_MAEL, display_name = "MAEL")]
@@ -148,6 +148,6 @@ for embed in HP_NUM_EMBEDDING.domain.values:
         run_name = "run-%d" % session_num
         print('--- Starting trial: %s' % run_name)
         print({h.name: hparams[h] for h in hparams})
-        run(filepath + "/hparam_tuning1/" + run_name, hparams)
+        run(filepath2 + "/hparam_tuning1/" + run_name, hparams)
         session_num += 1
         
